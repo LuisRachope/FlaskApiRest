@@ -1,0 +1,26 @@
+{
+    "usuarios": [
+      {
+        "id": 1,
+        "nome": "Juan Cortez",
+        "idade": 29,
+        "email": "juan@email.com",
+        "produtos": [
+          {"nome": "TV", "preco": 1090.44},
+          {"nome": "Video Cassete", "preco": 845.21},
+          {"nome": "Antena via radio", "preco": 294.11}
+        ]
+      },
+      {
+        "id": 2,
+        "nome": "Virginia Louis",
+        "idade": 26,
+        "email": "viriginia@email.com",
+        "produtos": [
+          {"nome": "Geladeira FrostFree", "preco": 2984.41},
+          {"nome": "Computador de Mesa", "preco": 1843.91}
+        ]
+      }
+    ]
+}
+  
