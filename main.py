@@ -1,20 +1,25 @@
-from flask import Flask, jsonify, request
-from controller.users import UserController
-from controller.data import DataController
+from flask import Flask, Blueprint
+from server.controller.users import user
 
-app = Flask(__name__)
-users = UserController()
-allInfo = DataController()
+# Globally accessible libraries
 
-@app.route('/get_all', methods=['GET'])
-def GetAll():
-	if(request.method == 'GET'):
-		return allInfo.GetAll()
-	
-@app.route('/get_user/<int:id>', methods=['GET'])
-def GetById(id):
-	if(request.method == 'GET'):
-		return users.GetById(id)
+def init_app():
+    """Inicialização do core da Aplicação"""
+    app = Flask(__name__, instance_relative_config=False)
+    #app.config.from_object('config.Config')
 
+    # Initialize Plugins
+    #user.init_app(app)
+    #data.init_app(app)
+
+    with app.app_context():
+        # Include our Routes
+        #from . import routes
+
+        # Register Blueprints
+        app.register_blueprint(user)
+
+        return app
+    
 if __name__ == '__main__':
-	app.run(debug=True)
+	init_app().run(debug=True)

@@ -1,25 +1,25 @@
 import json
-import service.FolderLib as FolderLib
+from .folder_lib import Folderlib
 
-class Database:
+class Database(Folderlib):
     def __init__(self):
-        serviceFolder = FolderLib.FindMyFolder()
-        self.pathFile = f"{serviceFolder.getPathFolder()}/data/base.json"
+        super().__init__()
+        self.path_file = f"{self.get_path_folder()}/data/base.json"
 
         # Abrir o arquivo JSON
-        with open(self.pathFile) as file:
+        with open(self.path_file) as file:
             self.data = json.load(file)
 
-    def ReadAll(self):
+    def read_all(self):
          # Retorna os dados do json como se fose da base
         return self.data 
     
-    def ReadByName(self, userId):
+    def read_by_id(self, user_id):
         users = self.data['usuarios']
         user = ''
 
         for row in users:
-            if row['id'] == userId:
+            if row['id'] == user_id:
                user = row
         
         return user
