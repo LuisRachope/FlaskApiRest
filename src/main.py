@@ -1,5 +1,5 @@
 from flask import Flask, Blueprint
-from server.controller.users import user
+from routes.user_routes import user as user_routes
 
 # Globally accessible libraries
 
@@ -17,7 +17,7 @@ def init_app():
         #from . import routes
 
         # Register Blueprints
-        app.register_blueprint(user)
+        app.register_blueprint(user_routes)
 
         return app
     
