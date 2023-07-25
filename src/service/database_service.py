@@ -1,7 +1,7 @@
 import json
-from .folder_lib import Folderlib
+from service.folder_service import FolderService
 
-class Database(Folderlib):
+class DatabaseService(FolderService):
     def __init__(self):
         super().__init__()
         self.path_file = f"{self.get_path_folder()}/data/base.json"

@@ -11,4 +11,10 @@ $ python main.py
 
 A aplicação será executada em _localhost_ na porta padrão 5000, conforme podemos verificar abaixo.
 
-![](image.png)
+![](exemplo-execucao.png)
+
+<br />
+
+## Info
+
+Se precisar de ajuda, a [seção info](./docs/info.md) da docs pode te auxiliar com links e informações úteis.
