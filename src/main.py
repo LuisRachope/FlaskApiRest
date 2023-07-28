@@ -10,7 +10,7 @@ def init_app():
 
     # Initialize Plugins
     #user.init_app(app)
-    #data.init_app(app)
+    #data.init_app(app) 
 
     with app.app_context():
         # Include our Routes
@@ -20,6 +20,7 @@ def init_app():
         app.register_blueprint(user_routes)
 
         return app
+        
+if __name__ == '__main__':
+	init_app().run(debug=True)
     
-#if __name__ == '__main__':
-#	init_app().run(debug=True)
