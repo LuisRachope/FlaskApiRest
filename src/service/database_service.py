@@ -1,17 +1,17 @@
 import json
-from service.folder_service import FolderService
+from src.service.folder_service import FolderService
 
 class DatabaseService(FolderService):
     def __init__(self):
         super().__init__()
         self.path_file = f"{self.get_path_folder()}/data/base.json"
 
-        # Abrir o arquivo JSON
+        # Abre o arquivo JSON
         with open(self.path_file) as file:
             self.data = json.load(file)
 
     def read_all(self):
-         # Retorna os dados do json como se fose da base
+         # Retorna a totalidade dos dados do json como se fose da base
         return self.data 
     
     def read_by_id(self, user_id):
