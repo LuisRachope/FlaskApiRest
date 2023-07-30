@@ -1,4 +1,4 @@
-from service.database_service import DatabaseService
+from src.service.database_service import DatabaseService
 
 class UserRepository(DatabaseService):
     def __init__(self) -> None:
