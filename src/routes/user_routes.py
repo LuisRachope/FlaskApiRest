@@ -4,6 +4,10 @@ from src.controller.user_controller import UserController
 user = Blueprint('server', __name__, url_prefix='/user')
 user_controller = UserController()
 
+@user.route('/')
+def index():
+    return "<h2>Bem-Vindo à API Flask WSGI<h2>", 200
+
 @user.route('/get_all', methods=['GET'])
 def user_get_all():
     data = user_controller.get_users_all()

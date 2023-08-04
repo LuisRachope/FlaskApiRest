@@ -1,4 +1,5 @@
 from flask import Flask
+from src.routes.index_routes import index
 from src.routes.user_routes import user as user_routes
 
 def init_app():
@@ -6,6 +7,7 @@ def init_app():
     app = Flask(__name__, instance_relative_config=False)
 
     with app.app_context():
+        app.register_blueprint(index)
         app.register_blueprint(user_routes)
 
         return app
