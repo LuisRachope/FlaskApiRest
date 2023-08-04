@@ -1,4 +1,4 @@
-from flask import Flask, Blueprint
+from flask import Flask
 from src.routes.user_routes import user as user_routes
 
 def init_app():
@@ -11,3 +11,4 @@ def init_app():
         return app
     
 app = init_app()
+#ctx = app.app_context()
