@@ -13,7 +13,7 @@ $ python main.py
 Para executar a aplicação, basta chamar o arquivo main com o comando abaixo, da seguinte forma:
 
 ```bash
-$ uwsgi --http 0.0.0.0:8080 -w src.main:init_app
+$ uwsgi --ini="uwsgi.ini"
 ```
 
 A aplicação será executada em _localhost_ na porta padrão 5000, conforme podemos verificar abaixo.
