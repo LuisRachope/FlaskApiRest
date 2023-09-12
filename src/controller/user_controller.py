@@ -1,4 +1,5 @@
 from src.repository.user_repository import UserRepository
+import json
 
 class UserController(UserRepository):
     def __init__(self) -> None:
@@ -22,3 +23,13 @@ class UserController(UserRepository):
             _type_: Retorna a lista de usuários no banco de dados
         """
         return self.get_all()
+    
+    def create_user(self, user):
+        """Cria um usuário no banco
+
+        Returns:
+            _type_: Retorna a lista de usuários no banco de dados
+        """
+        user_tuple = tuple(user.items())
+
+        return self.create_users(user_tuple)

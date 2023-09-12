@@ -58,8 +58,46 @@ class DatabaseRepository:
                 else:
                     cursor.execute(query)
                 return cursor.fetchall()
+    
+    def json_query(self, json):
+        columns = ''
+        values = ''
+        for value in json.keys():
+            columns += f"{value},"
+            values += "?,"
+            columns = columns[:-1]
+            values = values[:-1]
+        return columns, values
+        
+    def insert_db(self, table:str, params:str, values):
+        """Insert no banco
+
+            Args:
+                table (string): Nome da tabela que será realizado o insert
+                params (string): Conjunto de colunas que irão ser informadas para o insert na tabela
+                values (obj): Dados que serão inseridos 
+
+                Exemplo: rows = ({"id": 99, "name": "teste1", "age": 55, "email": "teste@email.com"},)
+        """
+        teste_params = params.replace(":", "")
+        
+        if not self.conn:
+                self.connect()
+        with self.conn:
+            cursor = self.conn.cursor()
+            cursor.executemany(f"INSERT INTO {table} ({teste_params}) VALUES({params})", values)
+            return cursor.fetchall()        
 
     def close(self):
         if self.conn:
             self.conn.close()
             self.conn = None
+        
+        """
+            Estudar com calma a questão do objeto
+            class ObjetoPersonalizado:
+                def __init__(self, **kwargs):
+                    for key, value in kwargs.items():
+                setattr(self, key, value)
+                    meu_objeto = ObjetoPersonalizado(**meu_dict)
+        """
