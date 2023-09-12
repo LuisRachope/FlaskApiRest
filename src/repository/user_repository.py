@@ -28,8 +28,7 @@ class UserRepository(DatabaseRepository):
         Returns:
             _type_: retorna a linha do banco com as informações do usuário
         """
-        response = self.fetch_all(f"SELECT * FROM {table}")
-        return response
+        return self.fetch_all(f"SELECT * FROM {table}")
     
     def create_users(self, user):
         """_summary_
