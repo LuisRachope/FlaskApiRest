@@ -1,3 +1,4 @@
+import json
 import src.data.database as db
 
 
@@ -69,7 +70,7 @@ class DatabaseRepository:
             values = values[:-1]
         return columns, values
         
-    def insert_db(self, table:str, params:str, values):
+    def insert_db(self, table:str, params, payload):
         """Insert no banco
 
             Args:
@@ -79,14 +80,23 @@ class DatabaseRepository:
 
                 Exemplo: rows = ({"id": 99, "name": "teste1", "age": 55, "email": "teste@email.com"},)
         """
-        teste_params = params.replace(":", "")
         
         if not self.conn:
                 self.connect()
         with self.conn:
+            # Instancia a conexão com o banco de dados
             cursor = self.conn.cursor()
-            cursor.executemany(f"INSERT INTO {table} ({teste_params}) VALUES({params})", values)
-            return cursor.fetchall()        
+
+            values = []
+            # Use um loop para adicionar os valores ao dicionário com chaves geradas automaticamente
+            for i, value in enumerate(payload):
+                values.append(value[1])
+
+            # Construa a consulta SQL com base nos dados
+            consulta_sql = f"INSERT INTO {table} ({', '.join(params)}) VALUES ({', '.join(['?']*len(values))})"
+
+            # Execute a consulta SQL com os valores
+            return cursor.execute(consulta_sql, values)
 
     def close(self):
         if self.conn:

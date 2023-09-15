@@ -2,6 +2,7 @@ from src.repository import DatabaseRepository
 
 table = 'user'
 params = ':id, :name, :age, :email'
+parametros = ["id", "name", "age", "email"]
 
 class UserRepository(DatabaseRepository):
     def __init__(self) -> None:
@@ -31,14 +32,14 @@ class UserRepository(DatabaseRepository):
         return self.fetch_all(f"SELECT * FROM {table}")
     
     def create_users(self, user):
-        """_summary_
-
+        """Cria um novo usuário no banco de dados, baseando-se no payload
         Args:
             id (integer): identificação do usuário no banco de dados
 
         Returns:
             _type_: retorna a linha do banco com as informações do usuário
         """
-        response = self.insert_db(table, params, user)
+        self.insert_db(table, parametros, user)
+        response = self.get_by_id(user[0][1])
         return response
 
