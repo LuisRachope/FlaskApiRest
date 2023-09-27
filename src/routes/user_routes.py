@@ -1,5 +1,6 @@
-from flask import jsonify, Blueprint, request
+from flask import jsonify, Blueprint, request, send_file
 from src.controller.user_controller import UserController
+from src.service import create_buffer_stream
 
 user = Blueprint('server', __name__, url_prefix='/user')
 user_controller = UserController()
@@ -19,3 +20,22 @@ def create_new_user():
     body = request.json
     response = user_controller.create_user(body)
     return jsonify(response), 200
+
+@user.route('/file', methods=['GET'])
+def create_file_user():
+    data = {
+            "id": 1001,
+            "name": "Teste de Buffer para o GET",
+            "age": 27,
+            "email": "teste@email.com"
+        }
+
+    buffer = create_buffer_stream(file_data=data)
+    
+    # Utiliza a função send_file do Flask para enviar o arquivo na response para download
+    return send_file(
+                    buffer,
+                    as_attachment=True,
+                    download_name='arquivo.json',
+                    mimetype='application/json'
+                    ), 200
