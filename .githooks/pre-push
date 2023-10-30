@@ -1,1 +1,3 @@
-echo "ola mundo"
+black -l 120 src
+isort -l 120 --profile black src
+mypy --strict src
