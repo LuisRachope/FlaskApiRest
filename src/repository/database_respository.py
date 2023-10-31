@@ -2,6 +2,7 @@ import os
 import sqlite3
 from typing import Any
 
+
 class DatabaseRepository:
     def __init__(self):
         self.conn = None
@@ -18,7 +19,7 @@ class DatabaseRepository:
             return self.conn
         else:
             self.conn = sqlite3.connect(self.database)
-            return None        
+            return None
 
     def close_connection(self) -> None:
         """Finaliza a sessão com o banco de dados"""
