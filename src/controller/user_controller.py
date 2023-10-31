@@ -1,11 +1,13 @@
-from src.repository.user_repository import UserRepository
 import json
+
+from src.repository.user_repository import UserRepository
+
 
 class UserController(UserRepository):
     def __init__(self) -> None:
         super().__init__()
 
-    def get_user_by_id(self, user_id:int):
+    def get_user_by_id(self, user_id: int):
         """User get by id
 
         Args:
@@ -17,13 +19,13 @@ class UserController(UserRepository):
         return self.get_by_id(user_id)
 
     def get_users_all(self):
-        """User all users 
+        """User all users
 
         Returns:
             _type_: Retorna a lista de usuários no banco de dados
         """
         return self.get_all()
-    
+
     def create_user(self, user):
         """Cria um usuário no banco
 
