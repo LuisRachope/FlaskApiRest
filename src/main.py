@@ -19,6 +19,3 @@ def init_app():
         return app
     
 app = init_app()
-#ctx = app.app_context()
-
-
