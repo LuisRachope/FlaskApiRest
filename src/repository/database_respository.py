@@ -2,15 +2,12 @@ import os
 import sqlite3
 from typing import Any
 
-DATABASE = "src/data/db_generic.db"
-
-
 class DatabaseRepository:
     def __init__(self):
         self.conn = None
         self.database = "src/data/db_generic.db"
 
-    def connect_db(self) -> sqlite3:
+    def connect_db(self) -> Any:
         """Cria uma conexão com o banco de dados sqlite3
 
         Returns:
@@ -18,10 +15,10 @@ class DatabaseRepository:
         """
         if os.path.exists(self.database):
             self.conn = sqlite3.connect(self.database)
+            return self.conn
         else:
             self.conn = sqlite3.connect(self.database)
-
-        return self.conn
+            return None        
 
     def close_connection(self) -> None:
         """Finaliza a sessão com o banco de dados"""

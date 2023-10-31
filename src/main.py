@@ -22,4 +22,3 @@ def init_app():
 
 
 app = init_app()
-# ctx = app.app_context()
