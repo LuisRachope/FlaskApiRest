@@ -1,7 +1,6 @@
 from flask import Flask
 
 from src.repository.database_respository import DatabaseRepository
-
 from src.routes.user_routes import user as user_routes
 
 dba = DatabaseRepository()

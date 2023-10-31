@@ -1,9 +1,9 @@
-
 import os
 import sqlite3
 from typing import Any
 
 DATABASE = "src/data/db_generic.db"
+
 
 class DatabaseRepository:
     def __init__(self):
@@ -22,14 +22,13 @@ class DatabaseRepository:
             self.conn = sqlite3.connect(self.database)
 
         return self.conn
-        
+
     def close_connection(self) -> None:
-        """Finaliza a sessão com o banco de dados
-        """
+        """Finaliza a sessão com o banco de dados"""
         if self.conn is not None:
             self.conn.close()
 
-    def create_table(self, table_name:str) -> None:
+    def create_table(self, table_name: str) -> None:
         """Realiza a criação da tabela de usuários (MOOK)
 
         Args:
@@ -46,13 +45,12 @@ class DatabaseRepository:
 
         self.conn.execute(query)
         self.conn.commit()
-        
 
     def insert_table(self, table_name: str) -> None:
         """Realiza um insert na tabela com o parametro 'table_name' (MOOK)
 
-         Args:
-            table_name (str): Nome que deseja dar para a tabela
+        Args:
+           table_name (str): Nome que deseja dar para a tabela
         """
         self.conn.execute(f"INSERT INTO {table_name} (id,name,age,email) VALUES (1, 'Paul', 28, 'paul@email.com')")
         self.conn.execute(f"INSERT INTO {table_name} (id,name,age,email) VALUES (2, 'Mark', 31, 'mark@email.com')")
@@ -158,5 +156,3 @@ class DatabaseRepository:
 
             # Execute a consulta SQL com os valores
             return cursor.execute(consulta_sql, values)
-        
-        
