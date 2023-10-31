@@ -1,4 +1,4 @@
-from src.repository import DatabaseRepository
+from src.repository.database_respository import DatabaseRepository
 
 table = "user"
 params = ":id, :name, :age, :email"

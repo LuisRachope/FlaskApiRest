@@ -1,9 +1,10 @@
 from flask import Flask
 
-from src.data.create_db import Database
+from src.repository.database_respository import DatabaseRepository
+
 from src.routes.user_routes import user as user_routes
 
-dba = Database()
+dba = DatabaseRepository()
 
 
 def init_app():
