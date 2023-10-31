@@ -1,8 +1,9 @@
-from io import BytesIO
 import json
+from io import BytesIO
 
 # Intancia o buffer IO
 buffer = BytesIO()
+
 
 def create_buffer_stream(file_data: dict) -> BytesIO:
     """Cria um buffer do arquivo recebido pela variável file_data.
@@ -15,7 +16,7 @@ def create_buffer_stream(file_data: dict) -> BytesIO:
     """
     try:
         # Serialize o JSON para uma string
-        json_str = json.dumps(file_data, indent=2).encode('utf-8')
+        json_str = json.dumps(file_data, indent=2).encode("utf-8")
 
         # Adiciona no buffer o conteúdo do arquivo
         buffer.write(json_str)
@@ -24,6 +25,6 @@ def create_buffer_stream(file_data: dict) -> BytesIO:
         buffer.seek(0)
 
         return buffer
-    
+
     except Exception as e:
         raise Exception(f"Erro ao criar o buffer de memória: {str(e)}")
