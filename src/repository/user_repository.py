@@ -1,11 +1,11 @@
-from src.repository.database_respository import DatabaseRepository
+from src.repository.database import Database
 
 table = "user"
 params = ":id, :name, :age, :email"
 parametros = ["id", "name", "age", "email"]
 
 
-class UserRepository(DatabaseRepository):
+class UserRepository(Database):
     def __init__(self) -> None:
         super().__init__()
 

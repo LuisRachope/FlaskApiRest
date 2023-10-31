@@ -3,10 +3,10 @@ import sqlite3
 from typing import Any
 
 
-class DatabaseRepository:
+class Database:
     def __init__(self):
         self.conn = None
-        self.database = "src/data/db_generic.db"
+        self.database = "src/data/db.sqlite3"
 
     def connect_db(self) -> Any:
         """Cria uma conexão com o banco de dados sqlite3
@@ -154,3 +154,22 @@ class DatabaseRepository:
 
             # Execute a consulta SQL com os valores
             return cursor.execute(consulta_sql, values)
+
+    def verify_table(self, table_name: str) -> bool:
+        """Verifica no banco de dados se existe a tabela informada no parametro 'table_name'
+
+        Args:
+            table_name (str): Nome da tabela procurada
+
+        Returns:
+            bool: Retorna true or false, dependendo se existe a tabela ou não no banco de dados
+        """
+
+        query = f"SELECT name FROM sqlite_master WHERE type='table' AND name='{table_name}'"
+        result = self.fetch_one(query=query) is not None
+
+        if result:
+            return True
+        
+        return False
+        

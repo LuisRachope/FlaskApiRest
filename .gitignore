@@ -160,4 +160,4 @@ cython_debug/
 #.idea/
 
 # Application Database
-db_generic.db
+db.sqlite3
