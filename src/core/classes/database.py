@@ -6,7 +6,7 @@ from typing import Any
 class Database:
     def __init__(self):
         self.conn = None
-        self.database = "src/data/db.sqlite3"
+        self.database = "src/core/data/db.sqlite3"
 
     def connect_db(self) -> Any:
         """Cria uma conexão com o banco de dados sqlite3
