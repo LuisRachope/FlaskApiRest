@@ -1,6 +1,6 @@
 from flask import Flask
 
-from src.repository.database import Database
+from src.core.classes.database import Database
 from src.routes.user_routes import user as user_routes
 
 dba = Database()
