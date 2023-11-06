@@ -1,3 +1,6 @@
-black -l 120 src
-isort -l 120 --profile black src
+black --check -l 120 src
+isort --check -l 120 --profile black src
 # mypy --strict src
+
+bash -c "if [[ $? == 1 ]];then printf '\nYou should lint your code. Please run the following command:\n  make lint\n\nRemember to commit any changes made by linters\n'; fi"
+echo
