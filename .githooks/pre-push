@@ -1,3 +1,5 @@
+printf "Running pre-push hook checks\n\n"
+
 black --check -l 120 src
 isort --check -l 120 --profile black src
 # mypy --strict src
