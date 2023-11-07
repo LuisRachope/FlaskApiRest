@@ -1,4 +1,4 @@
-from src.repository.database import Database
+from src.core.classes.database import Database
 
 table = "user"
 params = ":id, :name, :age, :email"
