@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request, send_file
 
 from src.controller.user_controller import UserController
-from src.service import create_buffer_stream
+from src.core.utils.buffer_file import create_buffer_stream
 
 user = Blueprint("server", __name__, url_prefix="/user")
 user_controller = UserController()
