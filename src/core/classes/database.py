@@ -170,6 +170,5 @@ class Database:
 
         if result:
             return True
-        
+
         return False
-        
